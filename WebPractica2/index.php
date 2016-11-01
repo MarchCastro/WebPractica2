@@ -27,8 +27,7 @@
 				url:"phps/cerrarSesion_AX.php",
 				data:{sesion:"acceso"},
 				success:function(resp){
-					/*if(resp == 1)
-						window.location = "login.php";*/
+						window.location = "login.php";
 					$("#resp_AX").html(resp);
 				}
 			});
@@ -47,6 +46,15 @@
         </div>
     </div> <!-- /container -->
 </section>
+<?php
+	print "<div class='container' style='text-align:right;'>";
+    	print "<div class='row'>";
+        	print "<div class='col s12'>";
+            	print "<h5 class='center blue-text'> Bienvenido ".$_SESSION["admin"]->nombre."</h5>";
+            print "</div>";
+        print "</div>";
+    print "</div>";
+?>
 <section id="formularioInsertar">
 	<div class="container">
     	<h2 class="blue-text">Insertar</h2>
@@ -135,7 +143,7 @@
             </div>
      	</div>
         <div class="row">
-        	<button id="cerrarSesion" value="Cerrar Sesion">Cerrar Sesi&oacute;n</button>
+        	<button class="btn ancho18 orange" id="cerrarSesion" value="Cerrar Sesion">Cerrar Sesi&oacute;n</button>
         </div>
 	</div> <!-- /container -->
 </section>

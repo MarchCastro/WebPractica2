@@ -1,12 +1,42 @@
 function inserta(){
-	$("#gifAnim img").show();
+	//$("#gifAnim img").show();
+	Lobibox.notify("info",{
+					title:"Se está insertando el alumno",
+					msg:"Se está realizando el registro del alumno, espera unos segundos.",
+					position:"center top",
+					delay:2000,
+					width:960,
+					iconSource:"fontAwesome"
+	});
 	$.ajax({
 		method:"post",
 		url:"phps/inserta_AX.php",
 		data:$("#formIns").serialize(),
 		success: function(resp){
 			$("#gifAnim img").hide();
-			$("#resp_AX").html(resp);
+			if(resp == 1){
+					Lobibox.notify("success",{
+					title:"Inserción exitosa.",
+					msg:"Se realizó correctamente el registro del alumno, en un momento se actualizará la tabla de alumnos.",
+					position:"center top",
+					delay:3000,
+					width:960,
+					iconSource:"fontAwesome"
+				});
+				actualiza_registros();
+			}else{
+				Lobibox.notify("error",{
+					title:"Ocurrió algo inesperado.",
+					msg:"No se ha podido realizar el registro del alumno.",
+					position:"center top",
+					delay:1000,
+					width:960,
+					iconSource:"fontAwesome"
+				});
+
+			}
+			
+			//$("#resp_AX").html(resp);
 		}
 	});
 	return false;
@@ -19,20 +49,38 @@ function elimina(){
 		iconSource:"fontAwesome",
 		callback: function($this, type, ev){
 			if(type === "yes"){
- 				$("#gifAnim img").show();
+ 				//$("#gifAnim img").show();
+				 Lobibox.notify("info",{
+						title:"Se está eliminando el alumno",
+						msg:"Se está realizando la eliminación del alumno, espera unos segundos.",
+						position:"center top",
+						delay:2000,
+						width:960,
+						iconSource:"fontAwesome"
+					});
 				$.ajax({
 					method:"post",
 					url:"phps/elimina_AX.php",
 					data:{numBoleta:$("#boletaDel option:selected").val()},
 					success:function(resp){
 						$("#gifAnim img").hide();
-						$("#resp_AX").html(resp);
+						//$("#resp_AX").html(resp);
+						Lobibox.notify("success",{
+							title:"Eliminación exitosa.",
+							msg:"Se realizó correctamente el la eliminación del alumno, en un momento se actualizará la tabla de alumnos.",
+							position:"center top",
+							delay:3000,
+							width:960,
+							iconSource:"fontAwesome"
+						});
+						actualiza_registros();
 					}
 				});
 			}else
 				return false;
 		}
 	});
+	
 	return false;
 }
 
@@ -44,9 +92,9 @@ function consulta(){
 		success:function(resp){
 			Lobibox.notify("success",{
 				title:"Respuesta del Servidor",
-				msg:"Se muestran correctamete los registros de la tala 'estudiante'",
+				msg:"Se muestran correctamete los registros de la tabla 'estudiante'",
 				position:"center top",
-				delay:3000,
+				delay:1000,
 				width:960,
 				iconSource:"fontAwesome"
 			});
@@ -55,6 +103,34 @@ function consulta(){
 			displayEstudiantes(tmp);
 		}
 	});
+	actualiza_registros();
+	return false;
+}
+function actualiza_registros(){
+	$("#gifAnim img").show();
+	$.ajax({
+		method:"post",
+		url:"phps/consulta_AX.php",
+		success:function(resp){
+			$("#gifAnim img").hide();
+			var tmp = $.parseJSON(resp);
+			displayEstudiantes(tmp);
+		}
+	});
+	$.ajax({
+		method:"get",
+		url:"phps/get_select_data.php",
+		success:function(resp){
+			//$("#gifAnim img").hide();
+			//var tmp = $.parseJSON(resp);
+			//displayEstudiantes(tmp);
+			$("#boletaDel").html(resp);
+			//$("#div1").html("<select> <option value=1> probando </option> </select>" );
+			$("select").material_select();
+		}
+	});
+
+	
 	return false;
 }
 
@@ -73,6 +149,7 @@ $(document).ready(function(e) {
 	$("select").material_select();
 	$("#btnElimina").on("click", elimina);
 	$("#btnConsulta").on("click", consulta);
+	$("#boletaDelSelect").attr("readonly", false);
 	
 	$("#gifAnim img").hide();
 	    $.validate({

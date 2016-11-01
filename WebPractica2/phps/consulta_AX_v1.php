@@ -1,5 +1,5 @@
 <?php
-	sleep(3);
+	sleep(1);
 	include("configBD.php");
 	$sql = "SELECT * FROM estudiante";
 	$res = mysqli_query($conexion, $sql);

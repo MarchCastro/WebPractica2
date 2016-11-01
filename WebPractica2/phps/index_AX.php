@@ -1,6 +1,5 @@
 <?php
 	include("configBD.php");
-	
 	$sqlEstudiante = "SELECT * FROM estudiante ORDER BY nombre";
 	$resEstudiante = mysqli_query($conexion,$sqlEstudiante);
 	$htmlEstudiante = "";

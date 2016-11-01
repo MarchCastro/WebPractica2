@@ -1,7 +1,7 @@
 <?php
-	$servidorBD = "localhost";
+	$servidorBD = "127.0.0.1";
 	$usrBD = "root";
-	$passBD = "";
+	$passBD = "postcardfrom1952";
 	$nombreBD = "sem20171";
 	
 	$conexion = mysqli_connect($servidorBD, $usrBD, $passBD, $nombreBD);

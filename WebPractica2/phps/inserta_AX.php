@@ -1,5 +1,5 @@
 <?php
-	sleep(3);
+	sleep(1);
 	
 	include("configBD.php");
 
@@ -16,9 +16,9 @@
 	
 	$msj_AX = "";
 	if($numFilasAff == 1){
-		$msj_AX .= "<h4>Se realiz&oacute; el registro correctamente. Gracias :)</h4>";
+		$msj_AX .= "1";
 	}else{
-		$msj_AX .= "<h4>Se present&oacute; un problema. Favor de intentarlo nuevamente</h4>";
+		$msj_AX .= "0";
 	}
 	
 	echo $msj_AX;

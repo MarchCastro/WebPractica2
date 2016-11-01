@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	if($_SESSION["acceso"] == "escom"){
+	//if($_SESSION["acceso"] == "escom"){
+	if(1==1){
 	include("phps/index_AX.php");
 ?>
 <!doctype html>
@@ -62,7 +63,7 @@
                 <div class="input-field col s12 m6">
                 	<i class="fa fa-group prefix"></i>
                 	<input type="text" id="nombre" name="nombre"
-                    data-validation="required">
+                    data-validation="required alphanumeric">
                 	<label for="nombre">Nombre:</label>
                 </div>
             </div>
@@ -70,7 +71,7 @@
             	<div class="input-field col s12 m6">
                 	<i class="fa fa-group prefix"></i>
                 	<input type="text" id="apellidos" name="apellidos"
-                    data-validation="required">
+                    data-validation="required alphanumeric">
 					<label for="apellidos">Apellidos:</label>
                 </div>
                 <div class="input-field col s12 m6">

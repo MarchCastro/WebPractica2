@@ -35,7 +35,7 @@ function inserta(){
 				});
 
 			}
-			
+
 			//$("#resp_AX").html(resp);
 		}
 	});
@@ -80,7 +80,7 @@ function elimina(){
 				return false;
 		}
 	});
-	
+
 	return false;
 }
 
@@ -130,9 +130,89 @@ function actualiza_registros(){
 		}
 	});
 
-	
+
 	return false;
 }
+
+
+// funcion de update
+function update(){
+
+$.ajax({
+	method:"post",
+	url:"phps/updateGetData.php",
+	data:{numBoleta:$("#numBoleta option:selected").val()},
+	success:function(resp){
+	var elegido = $.parseJSON(resp);
+	var nombre = document.getElementById("nombreUpd");
+	var boleta = document.getElementById("boletaUpd");
+	var apellidos = document.getElementById("apellidosUpd");
+	var correo = document.getElementById("correoUpd");
+	var curp = document.getElementById("curpUpd");
+	nombre.value=elegido.nombre;
+	boleta.value=elegido.boleta;
+	apellidos.value=elegido.apellidos;
+	correo.value=elegido.correo;
+	curp.value=elegido.curp;
+
+	var formU = document.getElementById("formUpd");
+	formU.setAttribute("style", "visibility:visible;");
+
+	}
+});
+
+}
+// fin funcion update
+
+
+//insert update
+
+function insertaUpd(){
+	//$("#gifAnim img").show();
+	Lobibox.notify("info",{
+					title:"Se está actualizando el alumno",
+					msg:"Se está realizando la actualizacion del alumno, espera unos segundos.",
+					position:"center top",
+					delay:2000,
+					width:960,
+					iconSource:"fontAwesome"
+	});
+	$.ajax({
+		method:"post",
+		url:"phps/insertaUpd_AX.php",
+		data:$("#formUpd").serialize(),
+		success: function(resp){
+			$("#gifAnim img").hide();
+			if(resp == 1){
+					Lobibox.notify("success",{
+					title:"actualizacion exitosa.",
+					msg:"Se realizó correctamente la actualizacion del alumno, en un momento se actualizará la tabla de alumnos.",
+					position:"center top",
+					delay:3000,
+					width:960,
+					iconSource:"fontAwesome"
+				});
+				actualiza_registros();
+			}else{
+				Lobibox.notify("error",{
+					title:"Ocurrió algo inesperado.",
+					msg:"No se ha podido realizar la actualizacion del alumno.",
+					position:"center top",
+					delay:1000,
+					width:960,
+					iconSource:"fontAwesome"
+				});
+
+			}
+
+			//$("#resp_AX").html(resp);
+		}
+	});
+	return false;
+}
+
+
+//fin insert update
 
 function displayEstudiantes(estudiantes){
 	var lngArray = estudiantes.length;
@@ -150,11 +230,18 @@ $(document).ready(function(e) {
 	$("#btnElimina").on("click", elimina);
 	$("#btnConsulta").on("click", consulta);
 	$("#boletaDelSelect").attr("readonly", false);
-	
+
 	$("#gifAnim img").hide();
 	    $.validate({
 		form:"#formIns",
 		lang:"es",
 		onSuccess:inserta
 	});
+
+			$.validate({
+		form:"#formUpd",
+		lang:"es",
+		onSuccess:insertaUpd
+		});
+
 });

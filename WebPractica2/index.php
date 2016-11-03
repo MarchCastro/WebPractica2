@@ -63,7 +63,7 @@
         	<div class="row">
                 <div class="input-field col s12 m6">
                 	<i class="fa fa-info prefix"></i>
-                    <input type="text" id="boleta" name="boleta" 
+                    <input type="text" id="boleta" name="boleta"
                     data-validation="required number length"
                     data-validation-length="8-10">
                     <label for="boleta">Boleta:</label>
@@ -92,7 +92,7 @@
             <div class="row">
                  <div class="input-field col s12 m6">
                  	<i class="fa fa-pencil prefix"></i>
-                	<input type="text" id="curp" name="curp" 
+                	<input type="text" id="curp" name="curp"
                     data-validation="required custom"
                     data-validation-regexp="[A-Z]{4}[0-9]{6}[H,M][A-Z]{5}[0-9]{2}$">
                 	<label for="curp">CURP:</label>
@@ -122,6 +122,83 @@
     </div><!-- /container -->
 </section>
 <hr>
+
+<!-- Seccion update -->
+<section id="formularioUpdate">
+	<div class="container">
+    	<h2 class="blue-text">Actualizar</h2>
+    	<div class="row">
+
+			<!--	<form action="phps/update_AX.php" method="post"> -->
+
+	        	<div class="input-field col s12 m6">
+	            	<select id="numBoleta" name="numBoleta" onchange="update()">
+						<?php echo $htmlEstudiante; ?>
+	                </select>
+	                <label for="boletaDel">Estudiante:</label>
+	            </div>
+	            <div class="col s12 m6">
+					<!-- </form> -->
+            </div>
+       	</div>
+    </div><!-- /container -->
+
+<!--Form para actualizar -->
+
+<form id="formUpd">
+	<div class="row">
+				<div class="input-field col s12 m6">
+					<i class="fa fa-info prefix"></i>
+						<input type="text" id="boletaUpd" name="boleta"
+						data-validation="required number length"
+						data-validation-length="8-10">
+						<label for="boleta">Boleta:</label>
+				</div>
+				<div class="input-field col s12 m6">
+					<i class="fa fa-group prefix"></i>
+					<input type="text" id="nombreUpd" name="nombre"
+						data-validation="required alphanumeric">
+					<label for="nombre">Nombre:</label>
+				</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12 m6">
+					<i class="fa fa-group prefix"></i>
+					<input type="text" id="apellidosUpd" name="apellidos"
+						data-validation="required alphanumeric">
+	<label for="apellidos">Apellidos:</label>
+				</div>
+				<div class="input-field col s12 m6">
+					<i class="fa fa-mail-reply prefix"></i>
+					<input type="text" id="correoUpd" name="correo"
+						data-validation="required email">
+					<label for="correo">Correo:</label>
+				</div>
+		</div>
+		<div class="row">
+				 <div class="input-field col s12 m6">
+					<i class="fa fa-pencil prefix"></i>
+					<input type="text" id="curpUpd" name="curp"
+						data-validation="required custom"
+						data-validation-regexp="[A-Z]{4}[0-9]{6}[H,M][A-Z]{5}[0-9]{2}$">
+					<label for="curp">CURP:</label>
+				</div>
+				<div class="input-field col s12 m6">
+					<input type="submit" class="btn ancho100 orange" value="actualizar">
+				</div>
+		</div>
+</form>
+
+<!--fin Form para actualizar -->
+
+</section>
+
+
+
+<!--fin Seccion update -->
+
+
+<hr>
 <section id="formularioConsultar">
 	<div class="container">
     	<h2 class="blue-text">Consultar</h2>
@@ -140,7 +217,7 @@
             		<img src="imgs/gears_64.gif">
         		</div>
                 <div id="resp_AX" class="center">
-                </div>  
+                </div>
             </div>
      	</div>
         <div class="row">

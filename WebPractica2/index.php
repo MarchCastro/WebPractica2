@@ -152,13 +152,13 @@
 						<input type="text" id="boletaUpd" name="boleta"
 						data-validation="required number length"
 						data-validation-length="8-10">
-						<label for="boleta">Boleta:</label>
+						<label  class="active" for="boleta">Boleta:</label>
 				</div>
 				<div class="input-field col s12 m6">
 					<i class="fa fa-group prefix"></i>
 					<input type="text" id="nombreUpd" name="nombre"
 						data-validation="required alphanumeric">
-					<label for="nombre">Nombre:</label>
+					<label  class="active" for="nombre">Nombre:</label>
 				</div>
 		</div>
 		<div class="row">
@@ -166,13 +166,13 @@
 					<i class="fa fa-group prefix"></i>
 					<input type="text" id="apellidosUpd" name="apellidos"
 						data-validation="required alphanumeric">
-	<label for="apellidos">Apellidos:</label>
+	<label  class="active" for="apellidos">Apellidos:</label>
 				</div>
 				<div class="input-field col s12 m6">
 					<i class="fa fa-mail-reply prefix"></i>
 					<input type="text" id="correoUpd" name="correo"
 						data-validation="required email">
-					<label for="correo">Correo:</label>
+					<label  class="active" for="correo">Correo:</label>
 				</div>
 		</div>
 		<div class="row">
@@ -181,7 +181,7 @@
 					<input type="text" id="curpUpd" name="curp"
 						data-validation="required custom"
 						data-validation-regexp="[A-Z]{4}[0-9]{6}[H,M][A-Z]{5}[0-9]{2}$">
-					<label for="curp">CURP:</label>
+					<label  class="active" for="curp">CURP:</label>
 				</div>
 				<div class="input-field col s12 m6">
 					<input type="submit" class="btn ancho100 orange" value="actualizar">

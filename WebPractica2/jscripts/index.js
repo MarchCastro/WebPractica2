@@ -156,6 +156,7 @@ $.ajax({
 	curp.value=elegido.curp;
 
 	var formU = document.getElementById("formUpd");
+	Materialize.updateTextFields();
 	formU.setAttribute("style", "visibility:visible;");
 
 	}
